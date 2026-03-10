@@ -1,0 +1,2 @@
+# IDcampGenAI
+Proyek Analisis Sentimen
