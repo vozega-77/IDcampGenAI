@@ -1,79 +1,100 @@
-# Play Store ChatGPT Review Sentiment Analysis
+# Analisis Sentimen Ulasan ChatGPT di Play Store
 
-## Project Overview
+## Gambaran Umum Proyek
 
-This project aims to analyze and classify user reviews of ChatGPT from the Play Store into positive, negative, and neutral sentiments. The analysis leverages Natural Language Processing (NLP) techniques and various machine learning models to gain insights into user feedback. The outcome of this project can help in enhancing customer satisfaction and guiding product development based on real user sentiments.
+Proyek ini bertujuan untuk menganalisis dan mengklasifikasikan ulasan pengguna ChatGPT dari Play Store ke dalam sentimen positif, negatif, dan netral. Analisis ini memanfaatkan teknik Pemrosesan Bahasa Alami (NLP) dan berbagai model pembelajaran mesin untuk mendapatkan wawasan tentang umpan balik pengguna. Hasil proyek ini dapat membantu meningkatkan kepuasan pelanggan dan memandu pengembangan produk berdasarkan sentimen pengguna yang sebenarnya.
 
-## Libraries Used
+## Pustaka yang Digunakan
 
-- **Pandas**: For data manipulation and analysis.
-- **NumPy**: For numerical operations.
-- **Seaborn and Matplotlib**: For data visualization.
-- **Re**: For regular expressions in text processing.
-- **NLTK and SpaCy**: For text processing and NLP tasks.
-- **WordCloud**: For generating word cloud visualizations.
-- **PIL**: For image processing.
-- **Scikit-learn**: For machine learning tasks.
-- **Imbalanced-learn**: For handling imbalanced datasets.
-- **XGBoost**: For advanced gradient boosting.
+- **Pandas**: Untuk manipulasi dan analisis data.
 
-## Exploratory Data Analysis (EDA)
+- **NumPy**: Untuk operasi numerik.
 
-The dataset of ChatGPT reviews was loaded and inspected to understand its structure. EDA included:
+- **Seaborn dan Matplotlib**: Untuk visualisasi data.
 
-- **Rating Distribution**: Visualizing the distribution of ratings to identify trends and patterns.
-- **Missing Values Analysis**: Identifying and handling missing values.
-- **Review Text Analysis**: Generating word clouds to visualize the most common words in the reviews.
+- **Re**: Untuk ekspresi reguler dalam pemrosesan teks.
 
-## Data Preprocessing
+- **NLTK dan SpaCy**: Untuk pemrosesan teks dan tugas NLP.
 
-1. **Combining Columns**: Combining review timestamp and review text into a single column for comprehensive analysis.
-2. **Lowercasing**: Converting all text to lowercase to maintain uniformity.
-3. **Removing Punctuation and Emojis**: Cleaning the text data by removing unnecessary characters.
-4. **Stopwords Removal**: Eliminating common words that do not contribute significantly to the sentiment analysis.
-5. **Lemmatization**: Reducing words to their base forms using SpaCy.
-6. **Removing Specific Words**: Removing words specific to the app (e.g., 'chatgpt', 'app') to focus on sentiment-bearing words.
+- **WordCloud**: Untuk menghasilkan visualisasi word cloud.
 
-## Sentiment Mapping
+- **PIL**: Untuk pemrosesan gambar.
 
-The ratings were mapped to sentiments:
-- **Positive**: Ratings > 3
-- **Neutral**: Ratings = 3
-- **Negative**: Ratings < 3
+- **Scikit-learn**: Untuk tugas pembelajaran mesin.
 
-## Imbalanced Data Handling
+- **Imbalanced-learn**: Untuk menangani dataset yang tidak seimbang.
 
-The dataset was imbalanced, with a higher proportion of positive reviews. To address this, Synthetic Minority Over-sampling Technique (SMOTE) was used to balance the dataset by oversampling the minority classes.
+- **XGBoost**: Untuk penguatan gradien tingkat lanjut.
 
-## Feature Extraction
+## Analisis Data Eksplorasi (EDA)
 
-Text features were extracted using:
-- **Count Vectorizer**: Converting text into a bag-of-words model.
-- **TF-IDF Vectorizer**: Converting text into term frequency-inverse document frequency (TF-IDF) features.
+Dataset ulasan ChatGPT dimuat dan diperiksa untuk memahami strukturnya. EDA meliputi:
 
-## Model Training and Evaluation
+- **Distribusi Peringkat**: Memvisualisasikan distribusi peringkat untuk mengidentifikasi tren dan pola.
 
-### Train-Test Split
+- **Analisis Nilai yang Hilang**: Mengidentifikasi dan menangani nilai yang hilang.
 
-The data was split into training and testing sets using a 85-15 split with stratification to maintain the distribution of sentiments.
+- **Analisis Teks Ulasan**: Menghasilkan awan kata untuk memvisualisasikan kata-kata yang paling umum dalam ulasan.
+
+## Pra-pemrosesan Data
+
+1. **Menggabungkan Kolom**: Menggabungkan stempel waktu ulasan dan teks ulasan ke dalam satu kolom untuk analisis komprehensif.
+
+2. **Mengubah Menjadi Huruf Kecil**: Mengubah semua teks menjadi huruf kecil untuk menjaga keseragaman.
+
+3. **Menghapus Tanda Baca dan Emoji**: Membersihkan data teks dengan menghapus karakter yang tidak perlu.
+
+4. **Penghapusan Kata-Kata Penghenti**: Menghilangkan kata-kata umum yang tidak berkontribusi secara signifikan terhadap analisis sentimen.
+
+5. **Lematisasi**: Mengurangi kata-kata ke bentuk dasarnya menggunakan SpaCy.
+
+6. **Penghapusan Kata-Kata Spesifik**: Menghapus kata-kata spesifik untuk aplikasi (misalnya, 'chatgpt', 'aplikasi') untuk fokus pada kata-kata yang mengandung sentimen.
+
+## Pemetaan Sentimen
+
+Peringkat dipetakan ke sentimen:
+
+- **Positif**: Peringkat > 3
+- **Netral**: Peringkat = 3
+- **Negatif**: Peringkat < 3
+
+## Penanganan Data Tidak Seimbang
+
+Dataset tidak seimbang, dengan proporsi ulasan positif yang lebih tinggi. Untuk mengatasi hal ini, Synthetic Minority Over-sampling Technique (SMOTE) digunakan untuk menyeimbangkan dataset dengan melakukan oversampling pada kelas minoritas.
+
+## Ekstraksi Fitur
+
+Fitur teks diekstraksi menggunakan:
+- **Count Vectorizer**: Mengonversi teks menjadi model bag-of-words.
+
+- **TF-IDF Vectorizer**: Mengonversi teks menjadi fitur term frequency-inverse document frequency (TF-IDF).
+
+## Pelatihan dan Evaluasi Model
+
+### Pembagian Data Pelatihan dan Pengujian
+
+Data dibagi menjadi set pelatihan dan pengujian menggunakan pembagian 85-15 dengan stratifikasi untuk mempertahankan distribusi sentimen.
 
 ### Multinomial Naive Bayes
 
-- **Training**: The Multinomial Naive Bayes model was trained on the processed data.
-- **Evaluation**: The model's performance was evaluated using classification metrics, achieving a reasonable accuracy.
+- **Pelatihan**: Model Multinomial Naive Bayes dilatih pada data yang telah diproses.
 
-### Logistic Regression
+- **Evaluasi**: Kinerja model dievaluasi menggunakan metrik klasifikasi, mencapai akurasi yang wajar.
 
-- **Training**: A logistic regression model was trained on the balanced dataset.
-- **Evaluation**: The model's performance was evaluated, showing competitive results.
+### Regresi Logistik
+
+- **Pelatihan**: Model regresi logistik dilatih pada dataset yang seimbang.
+
+- **Evaluasi**: Kinerja model dievaluasi, menunjukkan hasil yang kompetitif.
 
 ### XGBoost
 
-- **Training**: The XGBoost model was trained using the DMatrix API for efficient handling of the data.
-- **Evaluation**: XGBoost achieved the highest accuracy of 92%, demonstrating superior performance compared to other models.
+- **Pelatihan**: Model XGBoost dilatih menggunakan API DMatrix untuk penanganan data yang efisien.
 
-## Conclusion
+- **Evaluasi**: XGBoost mencapai akurasi tertinggi sebesar 92%, menunjukkan kinerja yang unggul dibandingkan model lain.
 
-The project successfully classified user reviews of ChatGPT from the Play Store into positive, negative, and neutral sentiments. XGBoost emerged as the best-performing model with an accuracy of 92%. This sentiment analysis provides valuable insights for businesses to understand user feedback, improve customer satisfaction, and make data-driven decisions for product enhancement.
+## Kesimpulan
 
-Overall, the developed sentiment analysis model offers a robust tool for analyzing and understanding user sentiments in reviews, helping to enhance the quality and user experience of ChatGPT.
+Proyek ini berhasil mengklasifikasikan ulasan pengguna ChatGPT dari Play Store ke dalam sentimen positif, negatif, dan netral. XGBoost muncul sebagai model berkinerja terbaik dengan akurasi 92%. Analisis sentimen ini memberikan wawasan berharga bagi bisnis untuk memahami umpan balik pengguna, meningkatkan kepuasan pelanggan, dan membuat keputusan berbasis data untuk peningkatan produk.
+
+Secara keseluruhan, model analisis sentimen yang dikembangkan menawarkan alat yang andal untuk menganalisis dan memahami sentimen pengguna dalam ulasan, membantu meningkatkan kualitas dan pengalaman pengguna ChatGPT.
